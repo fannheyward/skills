@@ -1,0 +1,6 @@
+interface:
+  display_name: "Squash Commits"
+  short_description: "Rebase and combine current branch commits into one"
+  default_prompt: "Use $squash-commits to rebase the current branch onto its default integration branch and combine its commits into one."
+policy:
+  allow_implicit_invocation: false
