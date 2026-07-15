@@ -34,6 +34,7 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 - ✅ Rebase before counting and squashing commits.
 - ✅ Move backup creation before all history rewriting.
 - ✅ Restrict the skill to explicit user invocation.
+- ✅ Move the skill into the standard `skills/` catalog directory and document installation.
 - ✅ Validate metadata and inspect the final files.
 
 ## Risk Assessment
@@ -56,10 +57,11 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 
 ## Progress Tracking
 
-- ✅ Implementation complete; YAML and explicit-only invocation checks passed. The bundled validator incompatibility is documented above.
+- ✅ Implementation complete; YAML, explicit-only invocation, and CLI discovery checks passed. The bundled validator incompatibility is documented above.
 
 ## Related Files
 
-- `squash-commits/SKILL.md`
-- `squash-commits/agents/openai.yaml`
+- `skills/squash-commits/SKILL.md`
+- `skills/squash-commits/agents/openai.yaml`
+- `README.md`
 - `docs/plan/squash-commits-skill-plan.md`
