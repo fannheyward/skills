@@ -1,0 +1,6 @@
+interface:
+  display_name: "Git Push Lease"
+  short_description: "Push safely and use lease-protected force"
+  default_prompt: "Use $git-push-lease to push the current Git branch safely."
+policy:
+  allow_implicit_invocation: false
