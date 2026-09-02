@@ -1,0 +1,6 @@
+interface:
+  display_name: "Find UI Icon"
+  short_description: "Find UI icons from Remix Icon or Phosphor Icons"
+  default_prompt: "Use $ui-find-icon to find a UI icon for this feature and show how to use it in the current project."
+policy:
+  allow_implicit_invocation: false
