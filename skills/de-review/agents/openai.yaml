@@ -1,0 +1,6 @@
+interface:
+  display_name: "De-review"
+  short_description: "Review and simplify changes through ablation"
+  default_prompt: "Use $de-review to review and simplify the selected changes with ablation experiments."
+policy:
+  allow_implicit_invocation: false
