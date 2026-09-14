@@ -42,6 +42,7 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 - Wrong commit boundary: require an explicit base when automatic detection is ambiguous.
 - Rebase conflicts: abort the rebase, verify restoration from the backup, and stop.
 - Lost history: create a backup branch before rebasing or resetting.
+- New edits during the operation: recheck state before rewriting and preserve user, hook, or unexplained changes instead of discarding them during recovery.
 - Changed content: verify the squashed commit's tree matches the post-rebase tree.
 - Validator compatibility: the bundled `quick_validate.py` does not recognize `disable-model-invocation`; validate YAML parsing and cross-file invocation policy directly.
 
@@ -58,6 +59,7 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 ## Progress Tracking
 
 - ✅ Implementation complete; YAML, explicit-only invocation, and CLI discovery checks passed. The bundled validator incompatibility is documented above.
+- The [GPT-6 Astra audit](gpt-6-astra-skills-audit.md) adds state checks before rebase and squash and limits recovery to changes attributable to the operation.
 
 ## Related Files
 

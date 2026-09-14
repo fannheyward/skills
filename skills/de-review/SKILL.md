@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 Review one pinned change set with `$code-review` and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
 
+An explicit review-only request limits this workflow to findings. If the user asks to confirm a plan, present the candidates before editing. Otherwise, complete the supported ablations within the selected scope.
+
 ## Pin the change set
 
 1. Capture `git status --short`, then select one scope:
@@ -15,24 +17,25 @@ Review one pinned change set with `$code-review` and `$ponytail-review`, then ap
    - An explicit staged request uses `git diff --cached` and excludes unstaged and untracked changes.
    - An explicit unstaged request uses `git diff` and treats untracked files as complete additions while excluding index-only changes.
    - Otherwise, review all uncommitted changes with `git diff HEAD` and treat each untracked file as a complete addition.
-2. Stop when the selected change set is empty. Record the exact commands, revisions, and paths so every review pass uses the same snapshot.
+2. Stop when the selected change set is empty. Record the exact commands, resolved revisions, paths, and selected file contents so every pass uses the same snapshot. Preserve the initial index and worktree state for detecting later edits.
 
 ## Review before editing
 
 1. Run `$code-review` and `$ponytail-review` against the pinned snapshot. For worktree or exact-commit scopes, replace `$code-review`'s default `<fixed-point>...HEAD` command with the pinned commands while keeping its Standards and Spec axes unchanged.
-2. Use the user's request as the spec when it states the required behavior. Otherwise, follow `$code-review`'s spec search. If no source exists, mark Spec as unavailable instead of inventing requirements.
-3. Keep the Standards, Spec, and Ponytail findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention.
+2. Use the user's request as the spec when it states the required behavior. Otherwise, search issue references and relevant repository specs with available tools. A missing issue-tracker setup file does not block review. If no source is available, mark Spec as unavailable and continue the supported axes.
+3. Keep review agents read-only and use parallel Standards and Spec reviews when the active agent policy permits them. If a referenced skill or independent agent is unavailable, disclose the missing stage and perform the supported review in the primary agent; do not claim an independent pass or install tooling to obtain one.
+4. Keep the Standards, Spec, and Ponytail findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention.
 
 ## Run ablations
 
 1. Choose an experiment tree. Use the current working tree when it matches the pinned snapshot; otherwise, copy the pinned content to a temporary location and remove it after the experiments.
-2. Establish a baseline with the smallest repository-native checks that cover the changed behavior. Record pre-existing failures. Trace every caller and requirement that depends on each candidate because unchanged tests prove only the behavior they cover.
+2. Establish a baseline with the smallest repository-native checks that cover the changed behavior. Reuse existing results for identical content and check configuration. Record pre-existing failures. Trace the callers and requirements affected by each candidate because unchanged tests prove only the behavior they cover. If required validation cannot run, report the candidate as unverified and leave it unapplied.
 3. Test one candidate at a time:
    - State the hypothesis: what can be removed, what replaces it, and which behavior must remain.
    - Apply the smallest removal or replacement in the experiment tree, then run the baseline and focused checks and inspect affected callers.
    - Keep the ablation only when required behavior remains, no new failure appears, and production code, dependencies, or design concepts decrease. If the result fails or remains uncertain, reverse only that experiment's hunks.
-4. Treat each accepted ablation as the next baseline. When using a temporary copy, apply accepted hunks to the current working tree only when they still match.
-5. Rerun the relevant checks and inspect the complete task-owned diff. Leave the index and Git history unchanged unless the user asks otherwise.
+4. Treat each accepted ablation as the next baseline. Before transferring accepted hunks from a temporary copy, recheck the recorded index and worktree state. Apply them only when they still match and preserve intervening edits; otherwise report the unapplied candidate.
+5. Inspect the complete task-owned diff. Reuse passing checks that cover the final content and rerun only when later changes, failures, or unresolved concerns invalidate them. Leave the index and Git history unchanged unless the user asks otherwise.
 
 ## Report
 

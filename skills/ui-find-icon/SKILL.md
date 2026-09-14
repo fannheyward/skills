@@ -1,17 +1,18 @@
 ---
 name: ui-find-icon
-description: Find and use an UI icon from Remix Icon or Phosphor Icons.
+description: Find and use a UI icon from Remix Icon or Phosphor Icons.
 disable-model-invocation: true
 ---
 
 # Find UI Icon
 
-Find the best-matching interface icon on the official Remix Icon and Phosphor Icons websites, then recommend it or add it to the target project.
+Find an interface icon that fits the requested meaning and existing UI. Recommend it for a lookup or integrate it when the user requests a code change.
 
 ## Establish the target
 
 1. Identify the icon's meaning, state, target platform, and expected size. When working in a repository, inspect nearby UI code and existing icon dependencies before searching.
-2. When the project's current icon library includes a good match, use that icon and follow the existing visual style. Infer the platform and style from adjacent code when doing so is low risk; ask only when missing information would materially change the result.
+2. Infer platform and style from adjacent code when the choice is low risk. Ask only when missing information would change the icon's meaning or implementation.
+3. If an existing project icon meets the request, verify its identifier and variant in the installed package or assets, follow nearby usage, and proceed to delivery. Search the websites when a new icon is needed or the user requests alternatives or a library comparison.
 
 ## Search and choose
 
@@ -23,7 +24,7 @@ Find the best-matching interface icon on the official Remix Icon and Phosphor Ic
 
 ## Deliver or apply
 
-- For a lookup, report the recommendation, its exact identifier and variant, the library, the official source URL, and a brief reason for choosing it. Include at most one alternative from the other searched library unless the user asks for more.
+- For a lookup, report one recommendation, its exact identifier and variant, the library, a verified official URL or local source path, and a brief reason. Include at most one alternative from the other searched library unless the user asks for more.
 - For a code change, follow the installed package's current API and existing usage in nearby code. Use the project's existing vector-asset pipeline when no library package is installed. Add or replace a dependency only when the user explicitly requests it.
 - Preserve platform behavior: give meaningful controls an accessible label, hide decorative icons from accessibility, and mirror directional icons when the existing UI supports right-to-left layouts.
-- If you change code, run the smallest relevant build, typecheck, or test and inspect the complete diff. Finish only when the implemented identifier exists in the selected library and every change belongs to the request.
+- For code changes, verify that the identifier exists, its use matches the installed API, accessibility remains correct, and the complete diff stays in scope. Use a focused build, typecheck, test, or visual check when those checks resolve a remaining risk. Reuse results for unchanged final content; report any relevant check that could not run.

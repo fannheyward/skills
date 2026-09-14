@@ -9,7 +9,7 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 - Name the skill `optimize-agents-md`. The action-oriented name matches its primary outcome and is easier to recall for explicit invocation than a generic domain-only name.
 - Make the skill explicit-only because the user wants it loaded only after typing `$optimize-agents-md`. Enforce this in both skill frontmatter and UI policy.
 - Keep the workflow in one `SKILL.md`; the task has one coherent path and does not justify extra reference files or scripts.
-- Treat contradictions as a decision gate. Report each material conflict and obtain the user's choice before rewriting the affected policy.
+- Resolve contradictions through instruction precedence and existing user choices. Ask for a decision only when a material policy choice remains unresolved; continue unaffected authorized work.
 - Treat the article's minimal root contents as a pruning heuristic, not an absolute schema. Universally applicable safety, precedence, or collaboration rules may also belong at the root.
 - Separate read-only review from authorized edits. A review produces findings and a proposed hierarchy; a create, refactor, fix, or optimize request applies the changes.
 - Prefer stable capabilities and domain concepts over copied directory maps, while retaining exact paths or commands when they are genuine operational invariants.
@@ -27,7 +27,7 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 - Over-pruning important policy: classify instructions by actual scope and preserve universal constraints even when they exceed the article's minimal examples.
 - Hiding required guidance behind weak links: make every pointer state the condition that triggers reading its target.
 - Creating stale documentation: verify claims against current repository configuration and avoid duplicating facts that are cheap to discover.
-- Changing policy while conflicts remain unresolved: pause only the affected edit and request a user decision.
+- Changing policy while conflicts remain unresolved: apply established precedence first, then pause only edits that require a new user decision.
 - Expanding review into mutation: map review verbs to read-only output and mutation verbs to edits.
 
 ## Success Criteria
@@ -44,6 +44,7 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 - Rename and explicit-only conversion complete.
 - YAML assertions confirmed the new name, default prompt, and both explicit-only controls; repository discovery exposes only `optimize-agents-md`.
 - The bundled validator rejects the supported `disable-model-invocation` field because its schema is stale. Independent YAML parsing, discovery, placeholder, whitespace, and diff checks cover this known incompatibility.
+- The [GPT-6 Astra audit](gpt-6-astra-skills-audit.md) clarifies mixed audit-and-edit requests, limits confirmation to unresolved choices, and keeps short policies in one file when splitting has no benefit.
 
 ## Related Files
 
