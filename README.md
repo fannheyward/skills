@@ -12,6 +12,7 @@ All skills in this repository require explicit invocation. Use `$skill-name` in 
 - [`squash-commits`](skills/squash-commits): Rebase the current branch onto its integration branch and combine its commits into one.
 - [`de-review`](skills/de-review): Review selected changes and remove unnecessary design through ablation experiments.
 - [`eli5`](skills/eli5): Explain a topic to a beginner with an HTML artifact, big pictures, and few words.
+- [`show-me`](skills/show-me): Explain the current topic with diagrams, code sketches, and HTML artifacts.
 
 ## Installation
 
