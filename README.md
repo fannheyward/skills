@@ -2,8 +2,6 @@
 
 Personal agent skills for agents.
 
-All skills in this repository require explicit invocation. Use `$skill-name` in Codex.
-
 ## Available Skills
 
 - [`ui-find-icon`](skills/ui-find-icon): Reuse a matching project icon or find one from Remix Icon and Phosphor Icons.
@@ -13,6 +11,7 @@ All skills in this repository require explicit invocation. Use `$skill-name` in 
 - [`de-review`](skills/de-review): Review selected changes and remove unnecessary design through ablation experiments.
 - [`eli5`](skills/eli5): Explain a topic to a beginner with an HTML artifact, big pictures, and few words.
 - [`show-me`](skills/show-me): Explain the current topic with diagrams, code sketches, and HTML artifacts.
+- [`unslop`](skills/unslop): Cut AI tells from any writing.
 
 ## Installation
 
