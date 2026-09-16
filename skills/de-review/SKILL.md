@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # De-review
 
-Review one pinned change set with `$code-review` and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
+Review one pinned change set with `$review-agent`, `$code-review`, and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
 
 An explicit review-only request limits this workflow to findings. If the user asks to confirm a plan, present the candidates before editing. Otherwise, complete the supported ablations within the selected scope.
 
@@ -21,10 +21,10 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Review before editing
 
-1. Run `$code-review` and `$ponytail-review` against the pinned snapshot. For worktree or exact-commit scopes, replace `$code-review`'s default `<fixed-point>...HEAD` command with the pinned commands while keeping its Standards and Spec axes unchanged.
+1. Run `$review-agent` for actionable defects, `$code-review` for Standards and Spec, and `$ponytail-review` for unnecessary complexity against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including `$review-agent`'s base-branch comparison and `$code-review`'s `<fixed-point>...HEAD` command.
 2. Use the user's request as the spec when it states the required behavior. Otherwise, search issue references and relevant repository specs with available tools. A missing issue-tracker setup file does not block review. If no source is available, mark Spec as unavailable and continue the supported axes.
-3. Keep review agents read-only and use parallel Standards and Spec reviews when the active agent policy permits them. If a referenced skill or independent agent is unavailable, disclose the missing stage and perform the supported review in the primary agent; do not claim an independent pass or install tooling to obtain one.
-4. Keep the Standards, Spec, and Ponytail findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention.
+3. Keep review agents read-only. Delegate `$review-agent` to a separate agent and use parallel Standards and Spec reviews when the active agent policy permits, respecting its role and concurrency limits. If a referenced skill or independent agent is unavailable, disclose the missing stage and perform the supported review in the primary agent; do not claim an independent pass or install tooling to obtain one.
+4. Keep the Defects, Standards, Spec, and Ponytail findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention.
 
 ## Run ablations
 
@@ -39,4 +39,4 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Report
 
-Report the pinned scope and keep `Standards`, `Spec`, and `Ponytail` separate. For each ablation, list its result, evidence, and net reduction. Include final checks and Git state. If no candidate passes, leave the code unchanged.
+Report the pinned scope and keep `Defects`, `Standards`, `Spec`, and `Ponytail` separate. For `Defects`, follow `$review-agent`'s finding format and severity order, use `No findings.` when the pass finds no qualifying defects, and include its overall assessment and material test gaps or residual risks. For each ablation, list its result, evidence, and net reduction. Include final checks and Git state. If no candidate passes, leave the code unchanged.
