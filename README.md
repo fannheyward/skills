@@ -26,7 +26,3 @@ Install a specific skill globally for Codex:
 ```bash
 npx skills add fannheyward/skills --skill squash-commits --global --agent codex --yes
 ```
-
-## Maintenance
-
-See the [GPT-6 Astra audit](docs/plan/gpt-6-astra-skills-audit.md) for the optimization rationale and validation scope.
