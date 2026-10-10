@@ -18,11 +18,14 @@ An explicit review-only request limits this workflow to findings. If the user as
    - An explicit unstaged request uses `git diff` and treats untracked files as complete additions while excluding index-only changes.
    - Otherwise, review all uncommitted changes with `git diff HEAD` and treat each untracked file as a complete addition.
 2. Stop when the selected change set is empty. Record the exact commands, resolved revisions, paths, and selected file contents so every pass uses the same snapshot. Preserve the initial index and worktree state for detecting later edits.
+3. Pin the surrounding repository context for caller, module, and test inspection. Use the resolved before/after revision trees for historical reviews, keeping non-contiguous patches in their respective contexts. For staged reviews, capture the HEAD and index context; for unstaged reviews, the index and worktree context; otherwise, the HEAD and worktree context. Record additional files consulted and share their pinned contents across passes. If matching context is unavailable, mark the affected findings as unverified.
 
 ## Review before editing
 
 1. Run `$review-agent` for actionable defects, `$code-review` for Standards and Spec, `$ponytail-review` for unnecessary complexity, and a Design pass using `$codebase-design` against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including `$review-agent`'s base-branch comparison and `$code-review`'s `<fixed-point>...HEAD` command.
-2. For Design, read the installed `$codebase-design` skill and use its vocabulary and principles to assess interface complexity, depth, locality, seam placement, adapter variation, and testability. Each finding must identify a problem introduced by the selected changes, the affected module, and concrete caller or test evidence. Apply the deletion test before proposing a module's removal.
+2. For Design, read the installed `$codebase-design` skill and use its vocabulary and principles to assess interface complexity, depth, locality, seam placement, adapter variation, and testability. Each finding must identify the affected module, concrete caller or test evidence, and whether the problem was introduced by the selected changes or already existed.
+   - Inspect the pinned repository context for shallow modules and deletion candidates, starting with the changed modules and their callers. Look for interfaces nearly as complex as their implementations and pass-through modules that hide little complexity.
+   - Apply the deletion test to each candidate before proposing removal. Explain whether deleting it makes complexity vanish or makes that complexity reappear across callers. Record candidates whose removal reduces total complexity and the evidence for retaining modules that earn their keep.
    - Read that skill's `DEEPENING.md` when assessing a candidate that combines modules or moves a seam, to determine its dependency and testing strategy.
    - Read its `DESIGN-IT-TWICE.md` only when the user requests alternative interfaces. Any delegation remains subject to the active agent policy.
 3. Use the user's request as the spec when it states the required behavior. Otherwise, search issue references and relevant repository specs with available tools. A missing issue-tracker setup file does not block review. If no source is available, mark Spec as unavailable and continue the supported axes.
@@ -31,7 +34,7 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Run ablations
 
-1. Choose an experiment tree. Use the current working tree when it matches the pinned snapshot; otherwise, copy the pinned content to a temporary location and remove it after the experiments.
+1. Choose an experiment tree. Use the current working tree when it matches the pinned snapshot and repository context; otherwise, copy the pinned content and required repository context, including build and test files, to a temporary location and remove it after the experiments.
 2. Establish a baseline with the smallest repository-native checks that cover the changed behavior. Reuse existing results for identical content and check configuration. Record pre-existing failures. Trace the callers and requirements affected by each candidate because unchanged tests prove only the behavior they cover. If required validation cannot run, report the candidate as unverified and leave it unapplied.
 3. Test one candidate at a time:
    - State the hypothesis: what can be removed, what replaces it, and which behavior must remain.
