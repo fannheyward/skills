@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # De-review
 
-Review one pinned change set with `$codebase-design`, `$review-agent`, `$code-review`, and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
+Review one pinned change set with `$codebase-design`, `$code-review`, and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
 
 An explicit review-only request limits this workflow to findings. If the user asks to confirm a plan, present the candidates before editing. Otherwise, complete the supported ablations within the selected scope.
 
@@ -22,15 +22,15 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Review before editing
 
-1. Run `$review-agent` for actionable defects, `$code-review` for Standards and Spec, `$ponytail-review` for unnecessary complexity, and a Design pass using `$codebase-design` against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including `$review-agent`'s base-branch comparison and `$code-review`'s `<fixed-point>...HEAD` command.
+1. Run `$code-review` for Standards and Spec, `$ponytail-review` for unnecessary complexity, and a Design pass using `$codebase-design` against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including `$code-review`'s `<fixed-point>...HEAD` command.
 2. For Design, read the installed `$codebase-design` skill and use its vocabulary and principles to assess interface complexity, depth, locality, seam placement, adapter variation, and testability. Each finding must identify the affected module, concrete caller or test evidence, and whether the problem was introduced by the selected changes or already existed.
    - Inspect the pinned repository context for shallow modules and deletion candidates, starting with the changed modules and their callers. Look for interfaces nearly as complex as their implementations and pass-through modules that hide little complexity.
    - Apply the deletion test to each candidate before proposing removal. Explain whether deleting it makes complexity vanish or makes that complexity reappear across callers. Record candidates whose removal reduces total complexity and the evidence for retaining modules that earn their keep.
    - Read that skill's `DEEPENING.md` when assessing a candidate that combines modules or moves a seam, to determine its dependency and testing strategy.
    - Read its `DESIGN-IT-TWICE.md` only when the user requests alternative interfaces. Any delegation remains subject to the active agent policy.
 3. Use the user's request as the spec when it states the required behavior. Otherwise, search issue references and relevant repository specs with available tools. A missing issue-tracker setup file does not block review. If no source is available, mark Spec as unavailable and continue the supported axes.
-4. Keep review agents read-only. Delegate `$review-agent` to a separate agent and use parallel Standards and Spec reviews when the active agent policy permits, respecting its role and concurrency limits. If a referenced skill or independent agent is unavailable, disclose the missing stage and perform the supported review in the primary agent; do not claim an independent pass or install tooling to obtain one.
-5. Keep the Defects, Standards, Spec, Ponytail, and Design findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention. Report design changes beyond this scope as recommendations.
+4. Keep review agents read-only. Use parallel Standards and Spec reviews when the active agent policy permits, respecting its role and concurrency limits. If a referenced skill or independent agent is unavailable, disclose the missing stage and perform the supported review in the primary agent; do not claim an independent pass or install tooling to obtain one.
+5. Keep the Standards, Spec, Ponytail, and Design findings separate. Use only unnecessary complexity introduced by the selected change set as ablation candidates. Exclude explicit requirements and behavior needed for correctness, security, compatibility, accessibility, or data-loss prevention. Report design changes beyond this scope as recommendations.
 
 ## Run ablations
 
@@ -45,4 +45,4 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Report
 
-Report the pinned scope and keep `Design`, `Defects`, `Standards`, `Spec`, and `Ponytail` separate. For `Defects`, follow `$review-agent`'s finding format and severity order, use `No findings.` when the pass finds no qualifying defects, and include its overall assessment and material test gaps or residual risks. For each ablation, list its result, evidence, and net reduction. Include final checks and Git state. If no candidate passes, leave the code unchanged.
+Report the pinned scope and keep `Design`, `Standards`, `Spec`, and `Ponytail` separate. For each ablation, list its result, evidence, and net reduction. Include final checks and Git state. If no candidate passes, leave the code unchanged.
