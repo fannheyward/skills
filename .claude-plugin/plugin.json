@@ -1,0 +1,19 @@
+{
+  "name": "fannheyward-skills",
+  "description": "Personal agent skills by fannheyward.",
+  "author": {
+    "name": "fannheyward"
+  },
+  "repository": "https://github.com/fannheyward/skills",
+  "skills": [
+    "./skills/de-review",
+    "./skills/delete-comment",
+    "./skills/eli5",
+    "./skills/git-push-lease",
+    "./skills/optimize-agents-md",
+    "./skills/show-me",
+    "./skills/squash-commits",
+    "./skills/ui-find-icon",
+    "./skills/unslop"
+  ]
+}
