@@ -2,11 +2,14 @@
 name: squash-commits
 description: Rebase the current Git branch onto its default integration branch, then squash its commits into one while preserving the rebased tree.
 disable-model-invocation: true
+argument-hint: "[base-ref]"
 ---
 
 # Squash Commits
 
 Rebase the current branch onto its integration branch, then replace the branch commits with one summarized commit.
+
+Invocation arguments, if any: $ARGUMENTS
 
 ## Inspect
 

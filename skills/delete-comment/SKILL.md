@@ -2,9 +2,12 @@
 name: delete-comment
 description: Review code comments, record non-obvious decisions, and prevent new comments from accumulating.
 disable-model-invocation: true
+argument-hint: "[path or scope]"
 ---
 
 # Delete comments
+
+Invocation arguments, if any: $ARGUMENTS
 
 Review every code comment in the requested scope. If no scope is given, review the whole codebase. Read the surrounding code before classifying each comment. Preserve tool directives, license notices, and attribution.
 

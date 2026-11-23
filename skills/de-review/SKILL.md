@@ -2,11 +2,14 @@
 name: de-review
 description: Review selected changes and remove unnecessary abstractions through verified ablation experiments.
 disable-model-invocation: true
+argument-hint: "[commit | range | staged | unstaged]"
 ---
 
 # De-review
 
-Review one pinned change set with `$codebase-design`, `$code-review`, and `$ponytail-review`, then apply only simplifications that an ablation shows are safe.
+Review one pinned change set with the `codebase-design`, `code-review`, and `ponytail-review` skills, then apply only simplifications that an ablation shows are safe.
+
+Invocation arguments, if any: $ARGUMENTS
 
 An explicit review-only request limits this workflow to findings. If the user asks to confirm a plan, present the candidates before editing. Otherwise, complete the supported ablations within the selected scope.
 
@@ -22,8 +25,8 @@ An explicit review-only request limits this workflow to findings. If the user as
 
 ## Review before editing
 
-1. Run `$code-review` for Standards and Spec, `$ponytail-review` for unnecessary complexity, and a Design pass using `$codebase-design` against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including `$code-review`'s `<fixed-point>...HEAD` command.
-2. For Design, read the installed `$codebase-design` skill and use its vocabulary and principles to assess interface complexity, depth, locality, seam placement, adapter variation, and testability. Each finding must identify the affected module, concrete caller or test evidence, and whether the problem was introduced by the selected changes or already existed.
+1. Run the `code-review` skill for Standards and Spec, the `ponytail-review` skill for unnecessary complexity, and a Design pass using the `codebase-design` skill against the pinned snapshot. Pass the recorded commands, revisions, paths, and file contents to every pass. These override each skill's default diff selection, including the `<fixed-point>...HEAD` command in `code-review`.
+2. For Design, read the installed `codebase-design` skill and use its vocabulary and principles to assess interface complexity, depth, locality, seam placement, adapter variation, and testability. Each finding must identify the affected module, concrete caller or test evidence, and whether the problem was introduced by the selected changes or already existed.
    - Inspect the pinned repository context for shallow modules and deletion candidates, starting with the changed modules and their callers. Look for interfaces nearly as complex as their implementations and pass-through modules that hide little complexity.
    - Apply the deletion test to each candidate before proposing removal. Explain whether deleting it makes complexity vanish or makes that complexity reappear across callers. Record candidates whose removal reduces total complexity and the evidence for retaining modules that earn their keep.
    - Read that skill's `DEEPENING.md` when assessing a candidate that combines modules or moves a seam, to determine its dependency and testing strategy.

@@ -2,11 +2,14 @@
 name: show-me
 description: Help the user understand the current topic visually with concise diagrams, code-shape sketches, and focused HTML artifacts.
 disable-model-invocation: true
+argument-hint: "[topic]"
 ---
 
 # show-me
 
 Help the user understand the current topic of conversation visually. Skip the preamble and keep prose brief. Pick the smallest view that makes the key point clear.
+
+Topic, if supplied as an argument: $ARGUMENTS
 
 - Show logic or an algorithm as pseudocode:
 

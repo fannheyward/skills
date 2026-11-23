@@ -2,9 +2,13 @@
 name: git-push-lease
 description: Push Git branches safely, using lease protection for forced updates.
 disable-model-invocation: true
+argument-hint: "[--force] [remote] [refspec]"
+allowed-tools: Bash(git push:*)
 ---
 
 # Git Push Lease
+
+Invocation arguments, if any: $ARGUMENTS
 
 1. Preserve any remote, refspec, and non-force options supplied by the user. When none are supplied, pass no extra arguments and let Git resolve its configured destination.
 2. For a normal update, run `git push` with the preserved arguments.

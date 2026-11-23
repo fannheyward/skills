@@ -27,3 +27,9 @@ Install a specific skill globally for Codex:
 ```bash
 npx skills add fannheyward/skills --skill squash-commits --global --agent codex --yes
 ```
+
+Install a specific skill globally for Claude Code:
+
+```bash
+npx skills add fannheyward/skills --skill squash-commits --global --agent claude-code --yes
+```

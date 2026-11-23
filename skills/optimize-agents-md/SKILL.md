@@ -2,11 +2,14 @@
 name: optimize-agents-md
 description: Audit and optimize AGENTS.md instruction hierarchies with progressive disclosure.
 disable-model-invocation: true
+argument-hint: "[audit | optimize] [path]"
 ---
 
 # Optimize AGENTS.md
 
 Build a small, current instruction hierarchy that gives agents universal context up front and routes conditional guidance only when it applies.
+
+Invocation arguments, if any: $ARGUMENTS
 
 ## Establish the boundary
 

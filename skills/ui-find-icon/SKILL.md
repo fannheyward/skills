@@ -2,11 +2,14 @@
 name: ui-find-icon
 description: Find and use a UI icon from Remix Icon or Phosphor Icons.
 disable-model-invocation: true
+argument-hint: "[icon meaning]"
 ---
 
 # Find UI Icon
 
 Find an interface icon that fits the requested meaning and existing UI. Recommend it for a lookup or integrate it when the user requests a code change.
+
+Invocation arguments, if any: $ARGUMENTS
 
 ## Establish the target
 
