@@ -12,6 +12,7 @@ Personal agent skills for agents.
 - [`eli5`](skills/eli5): Explain a topic to a beginner with an HTML artifact, big pictures, and few words.
 - [`show-me`](skills/show-me): Explain the current topic with diagrams, code sketches, and HTML artifacts.
 - [`unslop`](skills/unslop): Cut AI tells from any writing.
+- [`delete-comment`](skills/delete-comment): Classify code comments, move decisions into ADRs, and track workarounds in issues.
 
 ## Installation
 
