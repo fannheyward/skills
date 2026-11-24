@@ -6,14 +6,14 @@
   },
   "repository": "https://github.com/fannheyward/skills",
   "skills": [
-    "./skills/de-review",
-    "./skills/delete-comment",
-    "./skills/eli5",
-    "./skills/git-push-lease",
-    "./skills/optimize-agents-md",
-    "./skills/show-me",
-    "./skills/squash-commits",
-    "./skills/ui-find-icon",
-    "./skills/unslop"
+    "./skills/f-review",
+    "./skills/f-delete-comment",
+    "./skills/f-eli5",
+    "./skills/f-git-push-lease",
+    "./skills/f-optimize-agents-md",
+    "./skills/f-show-me",
+    "./skills/f-squash-commits",
+    "./skills/f-ui-find-icon",
+    "./skills/f-unslop"
   ]
 }

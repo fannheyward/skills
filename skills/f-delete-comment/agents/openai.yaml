@@ -1,0 +1,6 @@
+interface:
+  display_name: "f-delete-comment"
+  short_description: "Review code comments and record the decisions behind them"
+  default_prompt: "Use $f-delete-comment to review this repository's comments and prevent new ones."
+policy:
+  allow_implicit_invocation: false

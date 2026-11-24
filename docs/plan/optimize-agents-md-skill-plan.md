@@ -6,8 +6,8 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 
 ## Design Decisions
 
-- Name the skill `optimize-agents-md`. The action-oriented name matches its primary outcome and is easier to recall for explicit invocation than a generic domain-only name.
-- Make the skill explicit-only because the user wants it loaded only after typing `$optimize-agents-md`. Enforce this in both skill frontmatter and UI policy.
+- Name the skill `f-optimize-agents-md`. The action-oriented name matches its primary outcome and is easier to recall for explicit invocation than a generic domain-only name.
+- Make the skill explicit-only because the user wants it loaded only after typing `$f-optimize-agents-md`. Enforce this in both skill frontmatter and UI policy.
 - Keep the workflow in one `SKILL.md`; the task has one coherent path and does not justify extra reference files or scripts.
 - Resolve contradictions through instruction precedence and existing user choices. Ask for a decision only when a material policy choice remains unresolved; continue unaffected authorized work.
 - Treat the article's minimal root contents as a pruning heuristic, not an absolute schema. Universally applicable safety, precedence, or collaboration rules may also belong at the root.
@@ -16,7 +16,7 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 
 ## Implementation Steps
 
-- [x] Rename the skill directory to `skills/optimize-agents-md`.
+- [x] Rename the skill directory to `skills/f-optimize-agents-md`.
 - [x] Update skill frontmatter and UI metadata for the new name and explicit-only invocation.
 - [x] Update the repository catalog and plan references.
 - [x] Verify that discovery exposes only the new name and that both invocation controls disable implicit use.
@@ -32,7 +32,7 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 
 ## Success Criteria
 
-- The skill is available as `$optimize-agents-md` and cannot be selected implicitly.
+- The skill is available as `$f-optimize-agents-md` and cannot be selected implicitly.
 - Its workflow covers contradiction handling, root essentials, conditional grouping, nested monorepo scope, deletion candidates, implementation boundaries, and verification.
 - Root instructions stay limited to guidance needed across the root's full scope; conditional guidance is reachable through explicit trigger links.
 - `SKILL.md`, `agents/openai.yaml`, and `README.md` are consistent and pass metadata and discovery checks.
@@ -42,12 +42,12 @@ Create a reusable skill that applies the progressive-disclosure guidance and ref
 - Source article, closing prompt, repository conventions, and authoring guidance reviewed.
 - Initial skill implementation passed validation and repository discovery.
 - Rename and explicit-only conversion complete.
-- YAML assertions confirmed the new name, default prompt, and both explicit-only controls; repository discovery exposes only `optimize-agents-md`.
+- YAML assertions confirmed the new name, default prompt, and both explicit-only controls; repository discovery exposes only `f-optimize-agents-md`.
 - The bundled validator rejects the supported `disable-model-invocation` field because its schema is stale. Independent YAML parsing, discovery, placeholder, whitespace, and diff checks cover this known incompatibility.
 - The [GPT-6 Astra audit](gpt-6-astra-skills-audit.md) clarifies mixed audit-and-edit requests, limits confirmation to unresolved choices, and keeps short policies in one file when splitting has no benefit.
 
 ## Related Files
 
-- `skills/optimize-agents-md/SKILL.md`
-- `skills/optimize-agents-md/agents/openai.yaml`
+- `skills/f-optimize-agents-md/SKILL.md`
+- `skills/f-optimize-agents-md/agents/openai.yaml`
 - `README.md`

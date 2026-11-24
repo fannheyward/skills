@@ -14,11 +14,11 @@ Codex 的 `policy.allow_implicit_invocation: false` 禁止隐式调用，保留�
 
 | Skill | 发现 | 修改决策 |
 | --- | --- | --- |
-| `optimize-agents-md` | 按动词区分模式，未明示计划确认；所有实质冲突均要求提问 | 明确混合请求与计划确认的处理；先应用优先级，仅将未解决的政策选择交给用户 |
-| `ui-find-icon` | 复用已有图标与强制搜索两站存在冲突；小改动也必须构建或测试 | 已有图标满足需求时完成本地核验；新图标搜索保持 Remix 优先与两站比较；按风险选择检查 |
-| `de-review` | 引用的 review skill 可能要求额外 setup 或提问；末尾强制重复已通过检查 | 固定审查范围和来源优先级；说明缺失能力；复用同一最终内容的检查结果 |
-| `git-push-lease` | 强制语法归一化未说明保留指定 lease 条件；成功的 dry-run 可能被误报为推送完成 | 保留显式 lease 约束；区分预览成功与远端更新成功 |
-| `squash-commits` | 初始干净状态被当作稍后 `reset --hard` 的充分依据 | 变更前复核状态；恢复时保留新出现或来源不明的改动 |
+| `f-optimize-agents-md` | 按动词区分模式，未明示计划确认；所有实质冲突均要求提问 | 明确混合请求与计划确认的处理；先应用优先级，仅将未解决的政策选择交给用户 |
+| `f-ui-find-icon` | 复用已有图标与强制搜索两站存在冲突；小改动也必须构建或测试 | 已有图标满足需求时完成本地核验；新图标搜索保持 Remix 优先与两站比较；按风险选择检查 |
+| `f-review` | 引用的 review skill 可能要求额外 setup 或提问；末尾强制重复已通过检查 | 固定审查范围和来源优先级；说明缺失能力；复用同一最终内容的检查结果 |
+| `f-git-push-lease` | 强制语法归一化未说明保留指定 lease 条件；成功的 dry-run 可能被误报为推送完成 | 保留显式 lease 约束；区分预览成功与远端更新成功 |
+| `f-squash-commits` | 初始干净状态被当作稍后 `reset --hard` 的充分依据 | 变更前复核状态；恢复时保留新出现或来源不明的改动 |
 
 ## 设计决策与边界
 
@@ -52,9 +52,9 @@ Codex 的 `policy.allow_implicit_invocation: false` 禁止隐式调用，保留�
 
 ## 相关文件
 
-- [de-review](../../skills/de-review/SKILL.md)
-- [git-push-lease](../../skills/git-push-lease/SKILL.md)
-- [optimize-agents-md](../../skills/optimize-agents-md/SKILL.md)
-- [squash-commits](../../skills/squash-commits/SKILL.md)
-- [ui-find-icon](../../skills/ui-find-icon/SKILL.md)
+- [f-review](../../skills/f-review/SKILL.md)
+- [f-git-push-lease](../../skills/f-git-push-lease/SKILL.md)
+- [f-optimize-agents-md](../../skills/f-optimize-agents-md/SKILL.md)
+- [f-squash-commits](../../skills/f-squash-commits/SKILL.md)
+- [f-ui-find-icon](../../skills/f-ui-find-icon/SKILL.md)
 - [目录](../../README.md)

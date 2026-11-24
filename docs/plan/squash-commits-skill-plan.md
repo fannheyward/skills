@@ -29,7 +29,7 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 ## Implementation Steps
 
 - ✅ Remove the pull-request requirement and GitHub-specific workflow.
-- ✅ Rename the skill to `squash-commits`.
+- ✅ Rename the skill to `f-squash-commits`.
 - ✅ Add default-branch detection with a mandatory user question when ambiguous.
 - ✅ Rebase before counting and squashing commits.
 - ✅ Move backup creation before all history rewriting.
@@ -63,7 +63,7 @@ Use native Git commands without scripts or GitHub integration. Prefer a user-sup
 
 ## Related Files
 
-- `skills/squash-commits/SKILL.md`
-- `skills/squash-commits/agents/openai.yaml`
+- `skills/f-squash-commits/SKILL.md`
+- `skills/f-squash-commits/agents/openai.yaml`
 - `README.md`
 - `docs/plan/squash-commits-skill-plan.md`
