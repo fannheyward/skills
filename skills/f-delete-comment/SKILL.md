@@ -21,3 +21,5 @@ Review every code comment in the requested scope. If no scope is given, review t
 Add or update a lint rule that bans new code comments. If some comments remain, use them as the baseline. Removing one should tighten the baseline. Check that adding a different comment still fails even when the total count stays the same.
 
 Report each comment's original location, category, and outcome, including the issue or ADR where applicable. Estimate how many source lines deleting all comments would save. Count comment-only lines once and report inline removals separately, since they leave the source line in place.
+
+Adapted from [Matt Pocock's prompt for reviewing code comments](https://x.com/mattpocockuk/status/2123798388227403983).
