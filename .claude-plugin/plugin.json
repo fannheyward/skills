@@ -14,6 +14,9 @@
     "./skills/f-show-me",
     "./skills/f-squash-commits",
     "./skills/f-ui-find-icon",
-    "./skills/f-unslop"
+    "./skills/f-unslop",
+    "./skills/f-deslop",
+    "./skills/f-reframe",
+    "./skills/f-sharpen"
   ]
 }

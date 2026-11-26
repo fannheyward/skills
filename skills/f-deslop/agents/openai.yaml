@@ -1,0 +1,6 @@
+interface:
+  display_name: "f-deslop"
+  short_description: "Remove redundant code introduced by a branch"
+  default_prompt: "Use $f-deslop to clean up redundant code introduced by this branch."
+policy:
+  allow_implicit_invocation: true

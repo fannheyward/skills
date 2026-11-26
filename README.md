@@ -13,6 +13,9 @@ Personal agent skills for agents.
 - [`f-show-me`](skills/f-show-me): Explain the current topic with diagrams, code sketches, and HTML artifacts.
 - [`f-unslop`](skills/f-unslop): Cut AI tells from any writing.
 - [`f-delete-comment`](skills/f-delete-comment): Classify code comments, move decisions into ADRs, and track workarounds in issues.
+- [`f-sharpen`](skills/f-sharpen): Rewrite a task prompt with primary materials, specific methods, and a way to check the result.
+- [`f-reframe`](skills/f-reframe): Explain the domain terms behind a project and use them to rewrite the user's description.
+- [`f-deslop`](skills/f-deslop): Clean up redundant AI-generated code in a branch diff using the surrounding code as the style guide.
 
 ## Installation
 
